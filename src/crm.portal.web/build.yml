@@ -1,0 +1,5 @@
+steps:  
+  - bash: |
+      echo "Triiger build crm.portal.web - $(updated)"
+    displayName: Build CRM portal web
+    condition: and(succeeded(), eq(variables.updated, 'true'))

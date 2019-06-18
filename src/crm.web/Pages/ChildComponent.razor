@@ -1,0 +1,26 @@
+<div class="panel panel-default">
+    <div class="panel-heading">@Title</div>
+
+    <p>Year: @Year</p>
+
+    <button class="btn btn-primary" onclick="@OnClick">
+        Trigger a parent method
+    </button>
+</div>
+
+@functions {
+    [Parameter]
+    private string Title { get; set; }
+
+    [Parameter]
+    private RenderFragment ChildContent { get; set; }
+
+    [Parameter]
+    private int Year { get; set; }
+
+    [Parameter]
+    private EventCallback<int> YearChanged { get; set; }
+
+    [Parameter]
+    private EventCallback<UIMouseEventArgs> OnClick { get; set; }
+}
