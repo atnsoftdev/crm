@@ -21,7 +21,8 @@ RUN apt-get update \
         ca-certificates \
         jq \
         iputils-ping \
-        libcurl4 \     
+        libcurl4 \
+        libltdl7 \
     && rm -rf /var/lib/apt/lists/*
 
 # Install .NET Core SDK

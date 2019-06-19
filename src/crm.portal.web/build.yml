@@ -1,5 +1,22 @@
-steps:  
-  - bash: |
-      echo "Triiger build crm.portal.web - $(updated)"
-    displayName: Build CRM portal web
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: 10.16.0
     condition: and(succeeded(), eq(variables.updated, 'true'))
+  - task: Npm@1
+    displayName: Install npm package
+    inputs:
+      command: install
+      workingDir: src/crm.portal.web
+    condition: succeeded()
+  - task: Npm@1
+    displayName: Build CRM portal web
+    inputs:
+      command: custom
+      workingDir: src/crm.portal.web
+      customCommand: run build
+    condition: succeeded()
+  - script: |
+      docker build -t crm-portal-web:latest .
+    workingDirectory: src/crm.portal.web
+    condition: succeeded()
