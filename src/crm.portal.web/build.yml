@@ -1,4 +1,4 @@
-steps:
+steps:  
   - task: NodeTool@0
     inputs:
       versionSpec: 10.16.0
@@ -8,15 +8,15 @@ steps:
     inputs:
       command: install
       workingDir: src/crm.portal.web
-    condition: succeeded()
+    condition: and(succeeded(), eq(variables.updated, 'true'))
   - task: Npm@1
     displayName: Build CRM portal web
     inputs:
       command: custom
       workingDir: src/crm.portal.web
-      customCommand: run build
-    condition: succeeded()
+      customCommand: run build        
+    condition: and(succeeded(), eq(variables.updated, 'true'))
   - script: |
       docker build -t crm-portal-web:latest .
     workingDirectory: src/crm.portal.web
-    condition: succeeded()
+    condition: and(succeeded(), eq(variables.updated, 'true'))
