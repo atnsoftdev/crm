@@ -1,0 +1,33 @@
+version: '3.7'
+
+services:
+
+  postgres.data:
+    image: postgres:11-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - bridge
+
+  keycloak:
+    image: jboss/keycloak:6.0.1
+    container_name: keycloak
+    networks:
+      - bridge
+    depends_on:
+      - postgres.data
+
+  crmportal.web:
+    image: ${REGISTRY:-crm}/crm-portal-web:${TAG:-latest}
+    build:
+      context: .
+      dockerfile: src/crm.portal.web/Dockerfile
+    networks:
+      - bridge
+
+volumes:
+  postgres-data:
+  nexus-data:
+
+networks:
+  bridge:

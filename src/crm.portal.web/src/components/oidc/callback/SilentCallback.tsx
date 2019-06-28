@@ -7,16 +7,13 @@ export default (props: React.Component & RouteChildrenProps) => {
   useEffect(() => {
     let signinRedirectCallback = async () => {
       try {
-        const user = await AuthService.UserManager.signinRedirectCallback();
+        await AuthService.UserManager.signinSilentCallback();
 
-        LoggerService.info("Successfull token callback");
-
-        props.history.push(user.state.url);
+        LoggerService.info("Successfull token silent callback");
       } catch (error) {
         LoggerService.error(
           `There was an error while handling the token callback: ${error}`
         );
-        props.history.push("/authentication/401");
       }
     };
 

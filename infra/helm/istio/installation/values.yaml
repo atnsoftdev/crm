@@ -1,0 +1,51 @@
+global:
+  proxy:
+    resources:
+      requests:
+        cpu: 10m
+        memory: 40Mi
+
+  disablePolicyChecks: false
+
+pilot:
+  traceSampling: 100.0
+  resources:
+    requests:
+      cpu: 10m
+      memory: 100Mi
+
+mixer:
+  policy:
+    resources:
+      requests:
+        cpu: 10m
+        memory: 100Mi
+
+  telemetry:
+    resources:
+      requests:
+        cpu: 50m
+        memory: 100Mi
+
+grafana:
+  enabled: false
+
+tracing:
+  enabled: false
+
+kiali:
+  enabled: true
+
+gateways:
+  istio-ingressgateway:
+    resources:
+      requests:
+        cpu: 10m
+        memory: 40Mi
+
+  istio-egressgateway:
+    enabled: true
+    resources:
+      requests:
+        cpu: 10m
+        memory: 40Mi

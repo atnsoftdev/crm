@@ -24,7 +24,7 @@ import {
 
 import logo from "../../assets/img/logo.svg";
 import user from "../../assets/img/user.png";
-import { AppCtx, TOGGLE_COLLAPSE } from "../../contexts";
+import { AppCtx, AppActions } from "../../contexts";
 import { AuthService } from "services";
 
 const style = {
@@ -85,10 +85,10 @@ export default () => {
             <DropdownMenu right>
               <div className="dropdown-header text-center">
                 <p className="mb-1 mt-3 font-weight-semibold">
-                  {state.userLogin.userName}
+                  {state.userLogin ? state.userLogin.userName : ""}
                 </p>
                 <p className="font-weight-light text-muted mb-0">
-                  {state.userLogin.email}
+                  {state.userLogin ? state.userLogin.email : ""}
                 </p>
               </div>
               <DropdownItem>
@@ -100,7 +100,11 @@ export default () => {
                 Messages
               </DropdownItem>
               <DropdownItem divider />
-              <DropdownItem onClick={() => {AuthService.signOut()}}>
+              <DropdownItem
+                onClick={() => {
+                  AuthService.signOut();
+                }}
+              >
                 <FaSignOutAlt className="mr-2" /> Sign Out
                 <i className="dropdown-item-icon ti-power-off" />
               </DropdownItem>
@@ -112,7 +116,7 @@ export default () => {
           type="button"
           data-toggle="offcanvas"
           onClick={() => {
-            dispatch({ type: TOGGLE_COLLAPSE });
+            dispatch(AppActions.toggleCollapse());
           }}
         >
           <FaBars className="ml-2" />

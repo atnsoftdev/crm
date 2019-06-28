@@ -1,3 +1,3 @@
-export * from "./ApplicationContext";
+export * from "./AppContext";
 
 // export { AppCtx, AppCtxProvider };

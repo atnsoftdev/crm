@@ -6,7 +6,7 @@ import "./App.css";
 import { DefaultLayout } from "./containers";
 import { AppCtxProvider } from "./contexts";
 
-const App: React.FC = () => {
+export default () => {
   return (
     <>
       <BrowserRouter>
@@ -17,5 +17,3 @@ const App: React.FC = () => {
     </>
   );
 };
-
-export default App;

@@ -1,9 +1,9 @@
 import React from "react";
-
-import { Header, Footer, Sidebar } from "components";
 import Route from "Route";
 
-const layout: React.FC = () => {
+import { Header, Footer, Sidebar } from "components";
+
+export default () => {
   return (
     <div className="container-scroller">
       <Header />
@@ -18,5 +18,3 @@ const layout: React.FC = () => {
     </div>
   );
 };
-
-export default layout;

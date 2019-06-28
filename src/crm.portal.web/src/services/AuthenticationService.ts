@@ -29,7 +29,7 @@ class AuthenticationService {
     }
   }
 
-  async signOut() {    
+  async signOut() {
     if (!this.userManager || !this.userManager.getUser) {
       return;
     }

@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crm.web", "src\crm.web\crm.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crm.customer.api", "src\crm.customer.api\crm.customer.api.csproj", "{A6A33C90-E40D-47ED-BB8E-332E1D01555E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "crm.idm.web", "src\crm.idm.web\crm.idm.web.csproj", "{F68F19C9-BC8A-46B2-9252-62F843E69EED}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,10 +21,6 @@ Global
 		{A6A33C90-E40D-47ED-BB8E-332E1D01555E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6A33C90-E40D-47ED-BB8E-332E1D01555E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6A33C90-E40D-47ED-BB8E-332E1D01555E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F68F19C9-BC8A-46B2-9252-62F843E69EED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F68F19C9-BC8A-46B2-9252-62F843E69EED}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F68F19C9-BC8A-46B2-9252-62F843E69EED}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F68F19C9-BC8A-46B2-9252-62F843E69EED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+
+  postgres.data:
+    restart: always
+    ports:
+      - "42345:5432"
+    environment:
+      - POSTGRES_DB=keycloak
+      - POSTGRES_USER=lab
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+
+  nexus:
+    image: sonatype/nexus3
+    restart: always
+    networks:
+      - bridge
+    environment:
+      - NEXUS_CONTEXT=nexus
+    volumes:
+      - nexus-data:/nexus-data
+
+  proxy:
+    image: nginx:1.16.0
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    networks:
+      - bridge
+    volumes:
+      - ${NGINX_CONFIG_PATH}:/etc/nginx:ro
+      - ${LETSENCRYPT_CERT_PATH}:/etc/letsencrypt:ro
+    depends_on:
+      - keycloak
+      - nexus
+
+  keycloak:
+    restart: always
+    environment:
+      - KEYCLOAK_USER=lab
+      - KEYCLOAK_PASSWORD=${KEYCLOAK_PASSWORD}
+      - DB_ADDR=postgres.data
+      - DB_USER=lab
+      - DB_PASSWORD=${POSTGRES_PASSWORD}
+      - PROXY_ADDRESS_FORWARDING=true
