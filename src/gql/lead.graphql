@@ -1,0 +1,37 @@
+enum Title {
+  Mr,
+  Mrs,
+  Ms
+}
+
+type Lead {
+  leadOwner: String
+  company: String
+  firstName: String
+  lastName: String
+  title: String,
+  address: Address
+}
+
+type Address {
+  country: String,
+  city: String,
+  state: String,
+  zipcode: String,
+  street: String
+}
+
+input LeadInput {
+  leadOwner: String
+}
+
+# Extending the root Query type.
+extend type Query {
+  leads: [Lead]
+  ping: String
+}
+
+# Extending the root Mutation type.
+extend type Mutation {
+  createLead(input: LeadInput!): Lead
+}

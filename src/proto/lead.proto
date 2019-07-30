@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+import "google/protobuf/empty.proto";
+
+package leadApi;
+
+service Lead {
+  rpc Ping (google.protobuf.Empty) returns (PongReply);
+  rpc getLeads(google.protobuf.Empty) returns (LeadsResponse);
+  rpc createLead(CreateLeadRequest) returns (LeadInformation);
+}
+
+message PongReply {
+  string message = 1;
+}
+
+message AddressInformation {
+  string street = 1;
+  string city = 2;
+  string state = 3;
+  string zipcode = 4;
+  string country = 5;
+}
+
+message LeadsResponse {
+  repeated LeadInformation leads = 1;
+}
+
+message CreateLeadRequest {
+  string leadOwner = 1;
+}
+
+message LeadInformation {
+  string leadId =1;
+  string leadOwner = 2;
+  string firstName = 3;
+  string lastName = 4;
+  string company = 5;
+  string email = 6;
+  Title title = 7;
+  AddressInformation address = 8;
+  string description = 9;
+}
+
+enum Title {
+  Mr = 0;
+  Mrs = 1;
+  Ms = 2;
+}
+
+enum Gender {
+  male=0;
+  female=1;
+}

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <AssemblyName>CRM.Graph.Gateway</AssemblyName>
+    <RootNamespace>CRM.Graph.Gateway</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="GraphQL" Version="2.4.0"/>
+    <PackageReference Include="GraphQL.Server.Transports.AspNetCore" Version="3.4.0"/>
+    <PackageReference Include="GraphQL.Server.Ui.Playground" Version="3.4.0"/>
+    <PackageReference Include="Scrutor" Version="3.0.2"/>
+    <PackageReference Include="Grpc.Net.ClientFactory" Version="0.1.22-pre2"/>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\crm.datacontract\crm.datacontract.csproj"/>
+    <ProjectReference Include="..\crm.shared\crm.shared.csproj"/>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services"/>
+  </ItemGroup>
+</Project>

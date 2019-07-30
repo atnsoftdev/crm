@@ -1,6 +1,13 @@
 version: '3.7'
 
 services:
+  vault:
+    image: vault
+    container_name: vault
+    networks:
+      - bridge
+    cap_add: 
+      - IPC_LOCK
 
   postgres.data:
     image: postgres:11-alpine

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>CRM.DataContract</AssemblyName>
+  </PropertyGroup>
+
+ <ItemGroup>
+    <Protobuf Include="..\proto\lead.proto" Link="protos\lead.proto" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.9.0-rc1" />
+    <PackageReference Include="Grpc.Tools" Version="1.22.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Grpc.Core" Version="1.22.0" />
+  </ItemGroup>
+</Project>

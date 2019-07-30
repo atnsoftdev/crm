@@ -45,3 +45,5 @@ services:
       - DB_USER=lab
       - DB_PASSWORD=${POSTGRES_PASSWORD}
       - PROXY_ADDRESS_FORWARDING=true
+      - DB_VENDOR=postgres
+      - DB_DATABASE=keycloak

@@ -1,0 +1,12 @@
+type LeadInformation1 {
+  leadOwner: String
+  company: String
+  firstName: String
+  lastName: String
+  title: String
+}
+
+# Extending the root Query type.
+type Query {
+  ping123: [LeadInformation1]
+}

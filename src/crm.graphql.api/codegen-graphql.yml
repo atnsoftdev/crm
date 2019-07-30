@@ -1,0 +1,20 @@
+overwrite: true
+schema:
+  - ../gql/root.graphql
+  - ../gql/lead.graphql
+  - ../gql/account.graphql
+generates:
+  src/generated/graphql/generated-schema.graphql:
+    plugins:
+      - "schema-ast"
+  src/generated/graphql/generated-resolver.ts:
+    config:
+      noNamespaces: true
+      contextType: ../context#MyContext
+      withHooks: true
+      noHOC: true
+      noComponents: true
+    plugins:
+      - "typescript-common"
+      - "typescript-server"
+      - "typescript-resolvers"

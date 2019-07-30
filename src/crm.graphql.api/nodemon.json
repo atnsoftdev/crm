@@ -1,0 +1,11 @@
+{
+  "ignore": ["**/*.test.ts", "**/*.spec.ts", ".git", "node_modules"],
+  "watch": ["src"],
+  "exec": "npm run serve",
+  "ext": "ts",
+  "env": {
+    "NODE_PATH": "./src",
+    "DEBUG": "crm-grpc",
+    "LEAD_SERVICE_URL": "localhost:5001"
+  }
+}

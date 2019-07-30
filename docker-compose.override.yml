@@ -1,6 +1,11 @@
 version: '3.7'
 
 services:
+  vault:
+    ports: 
+      - 8200:8200
+    environment: 
+      - VAULT_DEV_ROOT_TOKEN_ID=secret
 
   postgres.data:
     ports:
@@ -19,6 +24,9 @@ services:
       - DB_ADDR=postgres.data
       - DB_USER=lab
       - DB_PASSWORD=P@ssw0rd
+      - PROXY_ADDRESS_FORWARDING=true
+      - DB_VENDOR=postgres
+      - DB_DATABASE=keycloak
 
   crmportal.web:
     ports:

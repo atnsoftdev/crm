@@ -6,7 +6,6 @@ import { LoggerService, AuthService } from "services";
 import { User } from "oidc-client";
 
 export const TOGGLE_COLLAPSE = "TOGGLE_COLLAPSE";
-// export const SIGNIN_CALLBACK = "SIGNIN_CALLBACK";
 export const LOAD_LOGINUSER = "LOAD_LOGINUSER";
 export const UNLOAD_LOGINUSER = "UNLOAD_LOGINUSER";
 
