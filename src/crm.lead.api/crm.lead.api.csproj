@@ -5,22 +5,21 @@
     <RootNamespace>CRM.Lead.Api</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Grpc.AspNetCore.Server" Version="0.1.22-pre1" />
-    <PackageReference Include="Google.Protobuf" Version="3.9.0-rc1" />
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0-preview6.19307.2" />
-    <PackageReference Include="Dapper" Version="1.60.9" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.0.0-preview6.19304.6" />
-    <PackageReference Include="FluentValidation" Version="8.5.0-preview4" />
-    <PackageReference Include="Scrutor" Version="3.0.2" />
-    <PackageReference Include="Npgsql" Version="4.0.8" />
-    <PackageReference Include="Serilog.Sinks.Seq" Version="4.0.0" />
+    <PackageReference Include="Grpc.AspNetCore.Server" Version="0.1.22-pre1"/>
+    <PackageReference Include="Google.Protobuf" Version="3.9.0-rc1"/>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0-preview6.19307.2"/>
+    <PackageReference Include="Dapper" Version="1.60.9"/>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="3.0.0-preview6.19304.6"/>
+    <PackageReference Include="FluentValidation" Version="8.5.0-preview4"/>
+    <PackageReference Include="Scrutor" Version="3.0.2"/>
+    <PackageReference Include="Npgsql" Version="4.0.8"/>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\crm.shared\crm.shared.csproj">
-      <GlobalPropertiesToRemove />
+      <GlobalPropertiesToRemove/>
     </ProjectReference>
     <ProjectReference Include="..\crm.datacontract\crm.datacontract.csproj">
-      <GlobalPropertiesToRemove />
+      <GlobalPropertiesToRemove/>
     </ProjectReference>
   </ItemGroup>
 </Project>

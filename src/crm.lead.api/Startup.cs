@@ -1,6 +1,7 @@
 using CRM.Lead.Api.Services;
 using CRM.Lead.Model;
 using CRM.Shared.Interceptors;
+using CRM.Shared.Jaeger;
 using CRM.Shared.Repository;
 using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Logging;
 using Npgsql;
+using OpenTracing.Contrib.Grpc.Interceptors;
 
 namespace CRM.Lead.Api
 {
@@ -28,8 +30,11 @@ namespace CRM.Lead.Api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddJaeger();
+
             services.AddGrpc(options =>
             {
+                options.Interceptors.Add<ServerTracingInterceptor>();
                 options.Interceptors.Add<ExceptionInterceptor>();
                 options.EnableDetailedErrors = true;
             });

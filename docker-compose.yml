@@ -4,37 +4,71 @@ services:
   vault:
     image: vault
     container_name: vault
+    ports: 
+      - 8200:8200
     networks:
-      - bridge
+      - crm
     cap_add: 
       - IPC_LOCK
 
+  seq:
+    image: datalust/seq
+    container_name: seq
+    environment: 
+      - ACCEPT_EULA=Y
+    networks: 
+      - crm
+    volumes: 
+      - seq-data:/data
+
+  jaeger:
+    image: jaegertracing/all-in-one
+    container_name: jaeger
+    ports:
+      - 5775:5775/udp
+      - 5778:5778
+      - 6831:6831/udp
+      - 6832:6832/udp
+      - 9411:9411
+      - 14268:14268
+      - 16686:16686
+    networks: 
+      - crm
+    
   postgres.data:
     image: postgres:11-alpine
+    ports:
+      - "5432:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
     networks:
-      - bridge
+      - crm
 
   keycloak:
     image: jboss/keycloak:6.0.1
     container_name: keycloak
+    ports:
+      - 8080:8080
     networks:
-      - bridge
+      - crm
     depends_on:
       - postgres.data
 
   crmportal.web:
     image: ${REGISTRY:-crm}/crm-portal-web:${TAG:-latest}
+    ports:
+      - 5000:80
     build:
       context: .
       dockerfile: src/crm.portal.web/Dockerfile
     networks:
-      - bridge
+      - crm
 
 volumes:
   postgres-data:
   nexus-data:
+  seq-data:
 
 networks:
-  bridge:
+  crm:
+    name: crm-network
