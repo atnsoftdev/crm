@@ -19,11 +19,14 @@ namespace CRM.Lead.Api.Services
 
         public LeadService(ILoggerFactory loggerFactory,
             IValidator<CreateLeadRequest> validator,
-            ILeadRepository leadRepository)
+            ILeadRepository leadRepository,
+            Shared.EventBus.Nats.INatsConnection connection)
         {
             _logger = loggerFactory.CreateLogger<LeadService>();
             _validator = validator;
             _leadRepo = leadRepository;
+
+            connection.TryConnect();
         }
 
         public override Task<PongReply> Ping(Empty request, ServerCallContext context)

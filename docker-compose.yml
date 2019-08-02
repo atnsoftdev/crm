@@ -54,15 +54,25 @@ services:
     depends_on:
       - postgres.data
 
-  crmportal.web:
-    image: ${REGISTRY:-crm}/crm-portal-web:${TAG:-latest}
-    ports:
-      - 5000:80
-    build:
-      context: .
-      dockerfile: src/crm.portal.web/Dockerfile
+  nats:
+    image: nats
+    container_name: nats
+    ports: 
+      - 4222:4222
+      - 6222:6222
+      - 8222:8222
     networks:
       - crm
+
+  # crmportal.web:
+  #   image: ${REGISTRY:-crm}/crm-portal-web:${TAG:-latest}
+  #   ports:
+  #     - 5000:80
+  #   build:
+  #     context: .
+  #     dockerfile: src/crm.portal.web/Dockerfile
+  #   networks:
+  #     - crm
 
 volumes:
   postgres-data:
